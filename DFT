@@ -1,0 +1,37 @@
+close all;
+clear all;
+xn=input('Enter the Sequence x(n)');%get the sequences from user
+L=length(xn);%find the length of the sequence
+xk=zeros(1,L);%intialize and carry of same size as that of in put sequence
+ixk=zeros(1,L);%intialize and carry of same size as that of input sequence
+%code block to find the DFT of the sequence
+for k=0:(L-1) 
+    for n=0:(L-1)
+        xk(k+1)=xk(k+1)+(xn(n+1)*exp((-i)*2*pi*k*n/L));
+    end
+end
+%code block to plot the in put sequence
+t=0:L-1;
+subplot(2,2,1);
+stem(t,xn);
+y label ('Amplitude');
+X label ('time index');
+title('input sequence');
+Magnitude=abs(xk);
+%find the magnitude of indvidual DFT points
+%code Block to Plot the Magnitude Response
+t=0:L-1;
+subplot(2,2,2);
+stem(t,Magnitude);
+Y label('amplitude');
+X label('k');
+title('magnitude responce');
+phase=angle(xk);
+%find the phases of indvidual DFT points
+%code block to plot the magnitude Sequences
+t=0:L-1;
+subplot(2,2,3);
+stem(t,phase);
+Y label('phase');
+X label('k');
+title('phase response');
