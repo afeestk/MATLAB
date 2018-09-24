@@ -1,0 +1,19 @@
+close all;
+clear all;
+x=input('Enter X:');
+h=input('Enter H:');
+m=length(x);
+n=length(h);
+x=[x,zeros(1,n)];
+H=[h,zeros(1,m)];
+for i=1:n+m-1 y(i)=0
+    for j=1:m if(i-j+1>0)
+            y(1)=y(i)+x(j)*H(i-j+1);
+        else
+        end
+    end
+end
+stem(y);
+ylabel('y(n)');
+xlabel('...>n');
+title('convolution of two signals without conv function');
