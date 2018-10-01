@@ -15,7 +15,7 @@ wn=(ws+wp)/2;
 if(rem(n,2)==0)m=n+1;
 else
     m=n;
-    n=n;
+    n=n-1;
 end
 %window Sequence Calculation
 w=hann(m);
@@ -23,4 +23,4 @@ w=hann(m);
 b=fir1(n,wn,'low',w);
 %ploating the filter responce
 freqz(b,1,500,3000);
-TITLE('Magnitude and Phase response');
+title('Magnitude and Phase response');
