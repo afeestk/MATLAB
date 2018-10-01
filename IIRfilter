@@ -1,0 +1,14 @@
+FN=1000/2;
+fc=300;
+%cut off Freequency
+N=5;
+%filter order
+[z,p,k]=buttap(N);
+%create an analoge filter
+w=linspace(0,FN/fc,1000);
+%ploat the responce of filter
+h=freqs(k*poly(z),poly(p),w);
+f=fc*w;
+plot(f,20*log10(abs(h)))
+grid ylabel('Magnitude (dB)');
+xlabel('Frequency (Hz)');
