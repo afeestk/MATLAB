@@ -1,0 +1,26 @@
+close all;
+clear all;
+fp=input('Enter the Pass band Frequency');
+fs=input('Enter the Stop Band Frequency');
+rp=input('Enter the Pass band Attunation');
+rs=input('Enter the Stop Band Attunation');
+f=input('Enter the Sample frequency');
+num=20*log10(sqrt(rp*rs))-13;
+dem=14.6*(fs-fp)/f;
+n=ceil(num/dem);
+n=abs(n);
+wp=2*fp/f;
+ws=2fs/f;
+wn=(ws+wp)2;
+if(rem(n,2)==0)m=n+1;
+else
+    m=n;
+    n=n;
+end
+%window Sequence Calculation
+w=hann(m);
+%calculation of filter coefficients
+b=fir1(n,wn,'low',w);
+%ploating the filter responce
+freqz(b,1,500,3000);
+TITLE('Magnitude and Phase response');
